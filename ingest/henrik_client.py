@@ -1,7 +1,7 @@
 import os
 import time
 import httpx
-from typing import Dict, Any, List, Optional
+from typing import Dict, Any, Optional
 from dotenv import load_dotenv
 from collections import deque
 from urllib.parse import quote
@@ -10,6 +10,9 @@ load_dotenv()
 
 HENRIK_BASE = "https://api.henrikdev.xyz"
 API_KEY = os.getenv("HENRIK_API_KEY")
+
+if not API_KEY:
+    raise RuntimeError("HENRIK_API_KEY not set in .env")
 
 HEADERS = {"Authorization": API_KEY}
 
